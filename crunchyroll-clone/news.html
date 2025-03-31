@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime News - AnimeHub</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        crunchyroll: {
+                            orange: '#F47521',
+                            dark: '#23252B',
+                            light: '#F2F2F2'
+                        }
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-crunchyroll-dark font-inter min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-crunchyroll-dark/95 border-b border-gray-800">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-8">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <img src="assets/logo.svg" alt="Anime Logo" class="h-10 w-10">
+                        <span class="text-white text-xl font-bold">AnimeHub</span>
+                    </a>
+                    <div class="hidden md:flex space-x-6">
+                        <a href="index.html" class="text-white hover:text-crunchyroll-orange transition">Home</a>
+                        <a href="#browse" class="text-white hover:text-crunchyroll-orange transition">Browse</a>
+                        <a href="news.html" class="text-crunchyroll-orange">News</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <button id="profileDropdown" class="flex items-center space-x-2 text-white hover:text-crunchyroll-orange transition">
+                            <div class="w-8 h-8 rounded-full bg-crunchyroll-orange flex items-center justify-center">
+                                <span class="text-white font-semibold">JD</span>
+                            </div>
+                            <span class="hidden md:inline">John Doe</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <!-- Featured News -->
+        <section class="mb-12">
+            <h1 class="text-3xl font-bold text-white mb-8">Latest Anime News</h1>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Featured Article -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?w=800" alt="Featured News" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center space-x-2 mb-4">
+                            <span class="bg-crunchyroll-orange text-white text-sm px-3 py-1 rounded-full">Breaking News</span>
+                            <span class="text-gray-400">March 31, 2024</span>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white mb-4">Attack on Titan Final Season Part 3 Announced</h2>
+                        <p class="text-gray-400 mb-4">The epic conclusion to the critically acclaimed series is set to air this summer. Get ready for the most intense episodes yet!</p>
+                        <a href="#" class="text-crunchyroll-orange hover:text-orange-400">Read More <i class="fas fa-arrow-right ml-2"></i></a>
+                    </div>
+                </div>
+
+                <!-- Recent News Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <!-- News Item -->
+                    <div class="bg-gray-800 rounded-lg overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1580477667995-2b94f01c9516?w=400" alt="News" class="w-full h-40 object-cover">
+                        <div class="p-4">
+                            <span class="text-gray-400 text-sm">March 30, 2024</span>
+                            <h3 class="text-white font-semibold mt-2">Demon Slayer Season 4 Release Date</h3>
+                        </div>
+                    </div>
+
+                    <!-- News Item -->
+                    <div class="bg-gray-800 rounded-lg overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=400" alt="News" class="w-full h-40 object-cover">
+                        <div class="p-4">
+                            <span class="text-gray-400 text-sm">March 29, 2024</span>
+                            <h3 class="text-white font-semibold mt-2">My Hero Academia Movie Announcement</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- News Categories -->
+        <section class="mb-12">
+            <div class="flex overflow-x-auto space-x-4 pb-4">
+                <button class="bg-crunchyroll-orange text-white px-4 py-2 rounded-full whitespace-nowrap">All News</button>
+                <button class="bg-gray-700 text-white px-4 py-2 rounded-full hover:bg-gray-600 whitespace-nowrap">Industry News</button>
+                <button class="bg-gray-700 text-white px-4 py-2 rounded-full hover:bg-gray-600 whitespace-nowrap">Announcements</button>
+                <button class="bg-gray-700 text-white px-4 py-2 rounded-full hover:bg-gray-600 whitespace-nowrap">Release Dates</button>
+                <button class="bg-gray-700 text-white px-4 py-2 rounded-full hover:bg-gray-600 whitespace-nowrap">Interviews</button>
+                <button class="bg-gray-700 text-white px-4 py-2 rounded-full hover:bg-gray-600 whitespace-nowrap">Events</button>
+            </div>
+        </section>
+
+        <!-- News Grid -->
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- News Article -->
+            <article class="bg-gray-800 rounded-lg overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1618336753974-aae8e04506aa?w=500" alt="News" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <span class="bg-blue-500 text-white text-sm px-3 py-1 rounded-full">Industry News</span>
+                        <span class="text-gray-400">March 28, 2024</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Jujutsu Kaisen Manga Reaches New Milestone</h3>
+                    <p class="text-gray-400 mb-4">The popular manga series has surpassed 70 million copies in circulation worldwide.</p>
+                    <a href="#" class="text-crunchyroll-orange hover:text-orange-400">Read More <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+            </article>
+
+            <!-- News Article -->
+            <article class="bg-gray-800 rounded-lg overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1618336753974-aae8e04506aa?w=500" alt="News" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <span class="bg-purple-500 text-white text-sm px-3 py-1 rounded-full">Events</span>
+                        <span class="text-gray-400">March 27, 2024</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">AnimeJapan 2024: Biggest Announcements</h3>
+                    <p class="text-gray-400 mb-4">All the major reveals and surprises from this year's biggest anime convention.</p>
+                    <a href="#" class="text-crunchyroll-orange hover:text-orange-400">Read More <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+            </article>
+
+            <!-- News Article -->
+            <article class="bg-gray-800 rounded-lg overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1618336753974-aae8e04506aa?w=500" alt="News" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <span class="bg-green-500 text-white text-sm px-3 py-1 rounded-full">Interview</span>
+                        <span class="text-gray-400">March 26, 2024</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Exclusive: Interview with One Piece Creator</h3>
+                    <p class="text-gray-400 mb-4">Eiichiro Oda discusses the future of the series and upcoming projects.</p>
+                    <a href="#" class="text-crunchyroll-orange hover:text-orange-400">Read More <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+            </article>
+        </section>
+
+        <!-- Newsletter Signup -->
+        <section class="mt-12 bg-gray-800 rounded-lg p-8">
+            <div class="max-w-2xl mx-auto text-center">
+                <h2 class="text-2xl font-bold text-white mb-4">Stay Updated</h2>
+                <p class="text-gray-400 mb-6">Subscribe to our newsletter for the latest anime news and updates.</p>
+                <form class="flex space-x-4">
+                    <input type="email" placeholder="Enter your email" 
+                        class="flex-grow bg-gray-700 text-white px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-crunchyroll-orange">
+                    <button type="submit" 
+                        class="bg-crunchyroll-orange text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-white font-semibold mb-4">About AnimeHub</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-crunchyroll-orange">About Us</a></li>
+                        <li><a href="#" class="hover:text-crunchyroll-orange">Help/FAQ</a></li>
+                        <li><a href="#" class="hover:text-crunchyroll-orange">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-crunchyroll-orange">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Community</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-crunchyroll-orange">Forums</a></li>
+                        <li><a href="#" class="hover:text-crunchyroll-orange">Discord Server</a></li>
+                        <li><a href="#" class="hover:text-crunchyroll-orange">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-2xl hover:text-crunchyroll-orange">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-2xl hover:text-crunchyroll-orange">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-2xl hover:text-crunchyroll-orange">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Download App</h3>
+                    <div class="space-y-4">
+                        <a href="#" class="block">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store" class="h-10">
+                        </a>
+                        <a href="#" class="block">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Play Store" class="h-10">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center">
+                <p>&copy; 2024 AnimeHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script>
+        // Newsletter Subscription
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = e.target.querySelector('input[type="email"]').value;
+            if (email) {
+                // Show success message
+                const toast = document.createElement('div');
+                toast.className = 'fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg';
+                toast.textContent = 'Thanks for subscribing!';
+                document.body.appendChild(toast);
+                setTimeout(() => toast.remove(), 3000);
+
+                // Clear input
+                e.target.reset();
+            }
+        });
+
+        // Category Filter
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active state from all buttons
+                document.querySelectorAll('button').forEach(b => {
+                    b.classList.remove('bg-crunchyroll-orange');
+                    b.classList.add('bg-gray-700');
+                });
+
+                // Add active state to clicked button
+                button.classList.remove('bg-gray-700');
+                button.classList.add('bg-crunchyroll-orange');
+
+                // Filter news (in a real app, this would fetch filtered news from the backend)
+            });
+        });
+    </script>
+</body>
+</html>
