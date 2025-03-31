@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Profiles - AnimeHub</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        crunchyroll: {
+                            orange: '#F47521',
+                            dark: '#23252B',
+                            light: '#F2F2F2'
+                        }
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .profile-avatar {
+            transition: transform 0.3s ease;
+        }
+        .profile-avatar:hover {
+            transform: scale(1.05);
+        }
+        .avatar-color-1 { background-color: #F47521; }
+        .avatar-color-2 { background-color: #4C51BF; }
+        .avatar-color-3 { background-color: #48BB78; }
+        .avatar-color-4 { background-color: #ED64A6; }
+        .avatar-color-5 { background-color: #9F7AEA; }
+    </style>
+</head>
+<body class="bg-crunchyroll-dark font-inter min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-crunchyroll-dark/95 border-b border-gray-800">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <img src="assets/logo.svg" alt="Anime Logo" class="h-10 w-10">
+                    <span class="text-white text-xl font-bold">AnimeHub</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <!-- Profile Selection -->
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-3xl font-bold text-white mb-4">Who's Watching?</h1>
+            <p class="text-gray-400 mb-8">Choose your profile or create a new one</p>
+
+            <!-- Profiles Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 mb-12">
+                <!-- Profile 1 -->
+                <div class="profile-avatar cursor-pointer">
+                    <div class="w-32 h-32 mx-auto rounded-lg avatar-color-1 flex items-center justify-center mb-4 shadow-lg">
+                        <span class="text-4xl font-bold text-white">JD</span>
+                    </div>
+                    <h3 class="text-white font-semibold">John Doe</h3>
+                </div>
+
+                <!-- Profile 2 -->
+                <div class="profile-avatar cursor-pointer">
+                    <div class="w-32 h-32 mx-auto rounded-lg avatar-color-2 flex items-center justify-center mb-4 shadow-lg">
+                        <span class="text-4xl font-bold text-white">AS</span>
+                    </div>
+                    <h3 class="text-white font-semibold">Alice Smith</h3>
+                </div>
+
+                <!-- Profile 3 -->
+                <div class="profile-avatar cursor-pointer">
+                    <div class="w-32 h-32 mx-auto rounded-lg avatar-color-3 flex items-center justify-center mb-4 shadow-lg">
+                        <span class="text-4xl font-bold text-white">MJ</span>
+                    </div>
+                    <h3 class="text-white font-semibold">Mike Johnson</h3>
+                </div>
+
+                <!-- Add Profile Button -->
+                <div class="profile-avatar cursor-pointer" onclick="showAddProfileModal()">
+                    <div class="w-32 h-32 mx-auto rounded-lg bg-gray-700 flex items-center justify-center mb-4 shadow-lg hover:bg-gray-600">
+                        <i class="fas fa-plus text-4xl text-gray-400"></i>
+                    </div>
+                    <h3 class="text-gray-400 font-semibold">Add Profile</h3>
+                </div>
+            </div>
+
+            <!-- Manage Profiles Button -->
+            <button onclick="toggleEditMode()" class="bg-transparent border-2 border-gray-600 text-gray-400 px-8 py-2 rounded-lg hover:border-gray-400 hover:text-white transition">
+                Manage Profiles
+            </button>
+        </div>
+
+        <!-- Add Profile Modal -->
+        <div id="addProfileModal" class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center">
+            <div class="bg-gray-800 rounded-lg p-8 max-w-md w-full mx-4">
+                <h2 class="text-2xl font-bold text-white mb-6">Add Profile</h2>
+                <form id="addProfileForm" class="space-y-6">
+                    <!-- Name Input -->
+                    <div>
+                        <label for="profileName" class="block text-gray-400 mb-2">Name</label>
+                        <input type="text" id="profileName" 
+                            class="w-full bg-gray-700 text-white px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-crunchyroll-orange"
+                            placeholder="Enter profile name">
+                    </div>
+
+                    <!-- Avatar Color Selection -->
+                    <div>
+                        <label class="block text-gray-400 mb-2">Avatar Color</label>
+                        <div class="grid grid-cols-5 gap-4">
+                            <button type="button" class="w-12 h-12 rounded-lg avatar-color-1"></button>
+                            <button type="button" class="w-12 h-12 rounded-lg avatar-color-2"></button>
+                            <button type="button" class="w-12 h-12 rounded-lg avatar-color-3"></button>
+                            <button type="button" class="w-12 h-12 rounded-lg avatar-color-4"></button>
+                            <button type="button" class="w-12 h-12 rounded-lg avatar-color-5"></button>
+                        </div>
+                    </div>
+
+                    <!-- Profile Type -->
+                    <div>
+                        <label class="block text-gray-400 mb-2">Profile Type</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center space-x-3">
+                                <input type="radio" name="profileType" value="adult" checked
+                                    class="text-crunchyroll-orange focus:ring-crunchyroll-orange">
+                                <span class="text-white">Adult</span>
+                            </label>
+                            <label class="flex items-center space-x-3">
+                                <input type="radio" name="profileType" value="kids"
+                                    class="text-crunchyroll-orange focus:ring-crunchyroll-orange">
+                                <span class="text-white">Kids</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Language Preference -->
+                    <div>
+                        <label for="language" class="block text-gray-400 mb-2">Preferred Language</label>
+                        <select id="language" 
+                            class="w-full bg-gray-700 text-white px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-crunchyroll-orange">
+                            <option value="en">English</option>
+                            <option value="ja">Japanese</option>
+                            <option value="es">Spanish</option>
+                        </select>
+                    </div>
+
+                    <!-- Autoplay Settings -->
+                    <div>
+                        <label class="block text-gray-400 mb-2">Autoplay Settings</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center space-x-3">
+                                <input type="checkbox" checked
+                                    class="text-crunchyroll-orange focus:ring-crunchyroll-orange rounded">
+                                <span class="text-white">Autoplay next episode</span>
+                            </label>
+                            <label class="flex items-center space-x-3">
+                                <input type="checkbox" checked
+                                    class="text-crunchyroll-orange focus:ring-crunchyroll-orange rounded">
+                                <span class="text-white">Autoplay previews</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex space-x-4">
+                        <button type="submit" 
+                            class="flex-1 bg-crunchyroll-orange text-white py-2 rounded-lg hover:bg-orange-600 transition">
+                            Create Profile
+                        </button>
+                        <button type="button" onclick="hideAddProfileModal()"
+                            class="flex-1 bg-gray-700 text-white py-2 rounded-lg hover:bg-gray-600 transition">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2024 AnimeHub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script>
+        // Show/Hide Add Profile Modal
+        function showAddProfileModal() {
+            document.getElementById('addProfileModal').classList.remove('hidden');
+        }
+
+        function hideAddProfileModal() {
+            document.getElementById('addProfileModal').classList.add('hidden');
+        }
+
+        // Toggle Edit Mode
+        function toggleEditMode() {
+            const profiles = document.querySelectorAll('.profile-avatar');
+            profiles.forEach(profile => {
+                profile.classList.toggle('editing');
+                if (profile.classList.contains('editing')) {
+                    // Add edit overlay
+                    const overlay = document.createElement('div');
+                    overlay.className = 'absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center';
+                    overlay.innerHTML = '<i class="fas fa-edit text-white text-2xl"></i>';
+                    profile.appendChild(overlay);
+                } else {
+                    // Remove edit overlay
+                    const overlay = profile.querySelector('.absolute');
+                    if (overlay) overlay.remove();
+                }
+            });
+        }
+
+        // Handle Profile Form Submission
+        document.getElementById('addProfileForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('profileName').value;
+            if (name) {
+                // Create new profile (in a real app, this would save to backend)
+                const initials = name.split(' ').map(n => n[0]).join('').toUpperCase();
+                const colorClass = `avatar-color-${Math.floor(Math.random() * 5) + 1}`;
+                
+                const profileHTML = `
+                    <div class="profile-avatar cursor-pointer">
+                        <div class="w-32 h-32 mx-auto rounded-lg ${colorClass} flex items-center justify-center mb-4 shadow-lg">
+                            <span class="text-4xl font-bold text-white">${initials}</span>
+                        </div>
+                        <h3 class="text-white font-semibold">${name}</h3>
+                    </div>
+                `;
+
+                // Add new profile to grid
+                const addProfileButton = document.querySelector('.profile-avatar:last-child');
+                addProfileButton.insertAdjacentHTML('beforebegin', profileHTML);
+
+                // Hide modal and reset form
+                hideAddProfileModal();
+                e.target.reset();
+            }
+        });
+
+        // Avatar Color Selection
+        document.querySelectorAll('[class^="avatar-color-"]').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove selected state from all buttons
+                document.querySelectorAll('[class^="avatar-color-"]').forEach(b => {
+                    b.classList.remove('ring-2', 'ring-white');
+                });
+                // Add selected state to clicked button
+                button.classList.add('ring-2', 'ring-white');
+            });
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('addProfileModal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                hideAddProfileModal();
+            }
+        });
+    </script>
+</body>
+</html>
