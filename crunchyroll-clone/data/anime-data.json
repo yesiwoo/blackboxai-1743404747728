@@ -1,0 +1,187 @@
+{
+  "featured": [
+    {
+      "id": 1,
+      "title": "Attack on Titan",
+      "originalTitle": "進撃の巨人",
+      "description": "Humanity lives inside cities surrounded by enormous walls due to the Titans, gigantic humanoid creatures who devour humans seemingly without reason.",
+      "image": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=500",
+      "coverImage": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=1920",
+      "rating": 4.9,
+      "year": 2013,
+      "status": "Completed",
+      "type": "TV Series",
+      "genres": ["Action", "Drama", "Fantasy", "Mystery"],
+      "episodes": [
+        {
+          "id": "aot-ep1",
+          "number": 1,
+          "title": "To You, 2,000 Years in the Future",
+          "description": "After 100 years of peace, humanity is suddenly reminded of the terror of being at the Titans' mercy.",
+          "thumbnail": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=500",
+          "duration": "23:45",
+          "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4"
+        },
+        {
+          "id": "aot-ep2",
+          "number": 2,
+          "title": "That Day: The Fall of Shiganshina",
+          "description": "After the Titans break through the wall, the citizens of Shiganshina must run for their lives.",
+          "thumbnail": "https://images.unsplash.com/photo-1580477667995-2b94f01c9516?w=500",
+          "duration": "23:45",
+          "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Demon Slayer",
+      "originalTitle": "鬼滅の刃",
+      "description": "A young man's journey to cure his sister's demonic curse and avenge his family's death.",
+      "image": "https://images.unsplash.com/photo-1580477667995-2b94f01c9516?w=500",
+      "coverImage": "https://images.unsplash.com/photo-1580477667995-2b94f01c9516?w=1920",
+      "rating": 4.8,
+      "year": 2019,
+      "status": "Ongoing",
+      "type": "TV Series",
+      "genres": ["Action", "Supernatural", "Historical", "Shounen"],
+      "episodes": [
+        {
+          "id": "ds-ep1",
+          "number": 1,
+          "title": "Cruelty",
+          "description": "Tanjiro's life changes when he returns home to find his family slaughtered and his sister turned into a demon.",
+          "thumbnail": "https://images.unsplash.com/photo-1580477667995-2b94f01c9516?w=500",
+          "duration": "23:45",
+          "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4"
+        }
+      ]
+    }
+  ],
+  "trending": [
+    {
+      "id": 3,
+      "title": "Jujutsu Kaisen",
+      "originalTitle": "呪術廻戦",
+      "description": "A boy swallows a cursed talisman - the finger of a demon - and becomes cursed himself. He enters a shaman's school to be able to locate the demon's other body parts and thus exorcise himself.",
+      "image": "https://images.unsplash.com/photo-1618336753974-aae8e04506aa?w=500",
+      "coverImage": "https://images.unsplash.com/photo-1618336753974-aae8e04506aa?w=1920",
+      "rating": 4.9,
+      "year": 2020,
+      "status": "Ongoing",
+      "type": "TV Series",
+      "genres": ["Action", "Supernatural", "School", "Shounen"],
+      "episodes": [
+        {
+          "id": "jjk-ep1",
+          "number": 1,
+          "title": "Ryomen Sukuna",
+          "description": "Yuji Itadori encounters a cursed object that changes his life forever.",
+          "thumbnail": "https://images.unsplash.com/photo-1618336753974-aae8e04506aa?w=500",
+          "duration": "23:45",
+          "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "My Hero Academia",
+      "originalTitle": "僕のヒーローアカデミア",
+      "description": "In a world where 80% of the population has super powers, a boy without them aims to become the greatest hero.",
+      "image": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=500",
+      "coverImage": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=1920",
+      "rating": 4.7,
+      "year": 2016,
+      "status": "Ongoing",
+      "type": "TV Series",
+      "genres": ["Action", "Comedy", "Super Power", "School"],
+      "episodes": [
+        {
+          "id": "mha-ep1",
+          "number": 1,
+          "title": "Izuku Midoriya: Origin",
+          "description": "In a world where people with superpowers known as 'Quirks' are the norm, Izuku Midoriya has dreams of enrolling in a prestigious hero academy and becoming a hero.",
+          "thumbnail": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=500",
+          "duration": "23:45",
+          "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4"
+        }
+      ]
+    }
+  ],
+  "popular": [
+    {
+      "id": 5,
+      "title": "One Punch Man",
+      "originalTitle": "ワンパンマン",
+      "description": "The story of Saitama, a hero who can defeat any opponent with a single punch but seeks to find a worthy opponent after growing bored by a lack of challenge.",
+      "image": "https://images.unsplash.com/photo-1612487528505-d2338264c821?w=500",
+      "coverImage": "https://images.unsplash.com/photo-1612487528505-d2338264c821?w=1920",
+      "rating": 4.8,
+      "year": 2015,
+      "status": "Ongoing",
+      "type": "TV Series",
+      "genres": ["Action", "Comedy", "Parody", "Sci-Fi"],
+      "episodes": [
+        {
+          "id": "opm-ep1",
+          "number": 1,
+          "title": "The Strongest Man",
+          "description": "Saitama, an unassociated hero, does heroic deeds for his own entertainment.",
+          "thumbnail": "https://images.unsplash.com/photo-1612487528505-d2338264c821?w=500",
+          "duration": "23:45",
+          "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Tokyo Revengers",
+      "originalTitle": "東京リベンジャーズ",
+      "description": "A man travels back in time to save his ex-girlfriend from being killed by a dangerous gang.",
+      "image": "https://images.unsplash.com/photo-1625895197185-efcec01cffe0?w=500",
+      "coverImage": "https://images.unsplash.com/photo-1625895197185-efcec01cffe0?w=1920",
+      "rating": 4.7,
+      "year": 2021,
+      "status": "Ongoing",
+      "type": "TV Series",
+      "genres": ["Action", "Drama", "Supernatural", "Time Travel"],
+      "episodes": [
+        {
+          "id": "tr-ep1",
+          "number": 1,
+          "title": "Reborn",
+          "description": "Takemichi Hanagaki learns that his middle school girlfriend has been killed by the Tokyo Manji Gang.",
+          "thumbnail": "https://images.unsplash.com/photo-1625895197185-efcec01cffe0?w=500",
+          "duration": "23:45",
+          "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4"
+        }
+      ]
+    }
+  ],
+  "newReleases": [
+    {
+      "id": 7,
+      "title": "Chainsaw Man",
+      "originalTitle": "チェンソーマン",
+      "description": "Following a betrayal, a young man left for dead is reborn as a powerful devil-human hybrid after merging with his pet devil and is soon enlisted by a government agency to fight against devils.",
+      "image": "https://images.unsplash.com/photo-1624456735729-03594a40c4fb?w=500",
+      "coverImage": "https://images.unsplash.com/photo-1624456735729-03594a40c4fb?w=1920",
+      "rating": 4.9,
+      "year": 2022,
+      "status": "Ongoing",
+      "type": "TV Series",
+      "genres": ["Action", "Horror", "Supernatural", "Gore"],
+      "episodes": [
+        {
+          "id": "csm-ep1",
+          "number": 1,
+          "title": "Dog & Chainsaw",
+          "description": "Denji is a young man trapped in poverty, working off his deceased father's debt by harvesting devil corpses with the aid of his devil-dog Pochita.",
+          "thumbnail": "https://images.unsplash.com/photo-1624456735729-03594a40c4fb?w=500",
+          "duration": "23:45",
+          "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4"
+        }
+      ]
+    }
+  ]
+}
