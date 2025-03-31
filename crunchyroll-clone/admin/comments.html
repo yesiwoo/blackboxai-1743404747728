@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comments Management - AnimeHub Admin</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        crunchyroll: {
+                            orange: '#F47521',
+                            dark: '#23252B',
+                            light: '#F2F2F2'
+                        }
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-crunchyroll-dark font-inter">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-gray-900 text-white">
+            <div class="p-4">
+                <div class="flex items-center space-x-2 mb-8">
+                    <img src="../assets/logo.svg" alt="AnimeHub Logo" class="h-8 w-8">
+                    <span class="text-xl font-bold">Admin Panel</span>
+                </div>
+                
+                <nav class="space-y-2">
+                    <a href="dashboard.html" class="flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-gray-800">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="content.html" class="flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-gray-800">
+                        <i class="fas fa-film"></i>
+                        <span>Content</span>
+                    </a>
+                    <a href="users.html" class="flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-gray-800">
+                        <i class="fas fa-users"></i>
+                        <span>Users</span>
+                    </a>
+                    <a href="comments.html" class="flex items-center space-x-2 px-4 py-2 rounded-lg bg-crunchyroll-orange">
+                        <i class="fas fa-comments"></i>
+                        <span>Comments</span>
+                    </a>
+                    <a href="#reports" class="flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-gray-800">
+                        <i class="fas fa-flag"></i>
+                        <span>Reports</span>
+                    </a>
+                    <a href="#settings" class="flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-gray-800">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1 overflow-auto">
+            <!-- Top Bar -->
+            <header class="bg-gray-800 p-4">
+                <div class="flex items-center justify-between">
+                    <h1 class="text-white text-xl font-bold">Comments Management</h1>
+                    <div class="flex items-center space-x-4">
+                        <div class="relative">
+                            <input type="text" placeholder="Search comments..." 
+                                class="bg-gray-700 text-white px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-crunchyroll-orange">
+                            <i class="fas fa-search absolute right-3 top-3 text-gray-400"></i>
+                        </div>
+                        <select class="bg-gray-700 text-white px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-crunchyroll-orange">
+                            <option value="all">All Comments</option>
+                            <option value="pending">Pending Review</option>
+                            <option value="approved">Approved</option>
+                            <option value="flagged">Flagged</option>
+                            <option value="spam">Spam</option>
+                        </select>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Comments Management Content -->
+            <div class="p-6">
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-gray-800 rounded-lg p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-gray-400">Total Comments</h3>
+                            <i class="fas fa-comments text-blue-500"></i>
+                        </div>
+                        <p class="text-3xl font-bold text-white">12,345</p>
+                    </div>
+                    <div class="bg-gray-800 rounded-lg p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-gray-400">Pending Review</h3>
+                            <i class="fas fa-clock text-yellow-500"></i>
+                        </div>
+                        <p class="text-3xl font-bold text-white">23</p>
+                    </div>
+                    <div class="bg-gray-800 rounded-lg p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-gray-400">Flagged</h3>
+                            <i class="fas fa-flag text-red-500"></i>
+                        </div>
+                        <p class="text-3xl font-bold text-white">15</p>
+                    </div>
+                    <div class="bg-gray-800 rounded-lg p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-gray-400">Spam</h3>
+                            <i class="fas fa-ban text-gray-500"></i>
+                        </div>
+                        <p class="text-3xl font-bold text-white">45</p>
+                    </div>
+                </div>
+
+                <!-- Comments List -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden">
+                    <!-- Bulk Actions -->
+                    <div class="p-4 border-b border-gray-700">
+                        <div class="flex items-center space-x-4">
+                            <select class="bg-gray-700 text-white px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-crunchyroll-orange">
+                                <option value="">Bulk Actions</option>
+                                <option value="approve">Approve Selected</option>
+                                <option value="delete">Delete Selected</option>
+                                <option value="spam">Mark as Spam</option>
+                            </select>
+                            <button class="bg-crunchyroll-orange text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition">
+                                Apply
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Comments Table -->
+                    <table class="w-full">
+                        <thead>
+                            <tr class="bg-gray-900">
+                                <th class="px-6 py-3 text-left">
+                                    <input type="checkbox" class="form-checkbox text-crunchyroll-orange rounded">
+                                </th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase">Author</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase">Comment</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase">Episode</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase">Status</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase">Date</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-700">
+                            <!-- Comment Row -->
+                            <tr>
+                                <td class="px-6 py-4">
+                                    <input type="checkbox" class="form-checkbox text-crunchyroll-orange rounded">
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center">
+                                        <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center">
+                                            <span class="text-white font-semibold">JD</span>
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="text-white">John Doe</p>
+                                            <p class="text-gray-400 text-sm">@johndoe</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <p class="text-white">Amazing episode! Can't wait for the next one!</p>
+                                    <div class="flex items-center mt-1">
+                                        <span class="text-gray-400 text-sm mr-2">
+                                            <i class="fas fa-thumbs-up mr-1"></i>15
+                                        </span>
+                                        <span class="text-gray-400 text-sm">
+                                            <i class="fas fa-reply mr-1"></i>3 replies
+                                        </span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <p class="text-white">Attack on Titan</p>
+                                    <p class="text-gray-400 text-sm">Episode 76</p>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                        Approved
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 text-gray-400">
+                                    2 hours ago
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="flex space-x-2">
+                                        <button class="text-blue-400 hover:text-blue-300" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="text-red-400 hover:text-red-300" title="Delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                        <button class="text-yellow-400 hover:text-yellow-300" title="Flag">
+                                            <i class="fas fa-flag"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- More comment rows... -->
+                        </tbody>
+                    </table>
+
+                    <!-- Pagination -->
+                    <div class="bg-gray-900 px-6 py-4">
+                        <div class="flex items-center justify-between">
+                            <div class="text-sm text-gray-400">
+                                Showing 1 to 10 of 12,345 comments
+                            </div>
+                            <div class="flex space-x-2">
+                                <button class="bg-gray-700 text-white px-3 py-1 rounded hover:bg-gray-600">Previous</button>
+                                <button class="bg-crunchyroll-orange text-white px-3 py-1 rounded">1</button>
+                                <button class="bg-gray-700 text-white px-3 py-1 rounded hover:bg-gray-600">2</button>
+                                <button class="bg-gray-700 text-white px-3 py-1 rounded hover:bg-gray-600">3</button>
+                                <button class="bg-gray-700 text-white px-3 py-1 rounded hover:bg-gray-600">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Handle bulk selection
+            const selectAll = document.querySelector('thead input[type="checkbox"]');
+            const commentCheckboxes = document.querySelectorAll('tbody input[type="checkbox"]');
+
+            selectAll.addEventListener('change', () => {
+                commentCheckboxes.forEach(checkbox => {
+                    checkbox.checked = selectAll.checked;
+                });
+            });
+
+            // Handle bulk actions
+            const bulkActionSelect = document.querySelector('select');
+            const applyButton = document.querySelector('button');
+
+            applyButton.addEventListener('click', () => {
+                const selectedAction = bulkActionSelect.value;
+                const selectedComments = Array.from(commentCheckboxes)
+                    .filter(checkbox => checkbox.checked)
+                    .map(checkbox => checkbox.closest('tr'));
+
+                if (!selectedAction || selectedComments.length === 0) {
+                    alert('Please select an action and at least one comment');
+                    return;
+                }
+
+                // Handle different actions
+                switch (selectedAction) {
+                    case 'approve':
+                        approveComments(selectedComments);
+                        break;
+                    case 'delete':
+                        deleteComments(selectedComments);
+                        break;
+                    case 'spam':
+                        markAsSpam(selectedComments);
+                        break;
+                }
+            });
+
+            // Action handlers
+            function approveComments(comments) {
+                comments.forEach(comment => {
+                    const status = comment.querySelector('td:nth-child(5) span');
+                    status.className = 'px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800';
+                    status.textContent = 'Approved';
+                });
+                showToast('Comments approved successfully');
+            }
+
+            function deleteComments(comments) {
+                if (confirm(`Delete ${comments.length} selected comments?`)) {
+                    comments.forEach(comment => comment.remove());
+                    showToast('Comments deleted successfully');
+                }
+            }
+
+            function markAsSpam(comments) {
+                comments.forEach(comment => {
+                    const status = comment.querySelector('td:nth-child(5) span');
+                    status.className = 'px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800';
+                    status.textContent = 'Spam';
+                });
+                showToast('Comments marked as spam');
+            }
+
+            function showToast(message) {
+                const toast = document.createElement('div');
+                toast.className = 'fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg';
+                toast.textContent = message;
+                document.body.appendChild(toast);
+                setTimeout(() => toast.remove(), 3000);
+            }
+        });
+    </script>
+</body>
+</html>
