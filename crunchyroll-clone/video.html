@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch Anime - AnimeHub</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        crunchyroll: {
+                            orange: '#F47521',
+                            dark: '#23252B',
+                            light: '#F2F2F2'
+                        }
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #2D3748;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #4A5568;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #718096;
+        }
+    </style>
+</head>
+<body class="bg-crunchyroll-dark font-inter min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-crunchyroll-dark/95 border-b border-gray-800">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-8">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <img src="assets/logo.svg" alt="Anime Logo" class="h-10 w-10">
+                        <span class="text-white text-xl font-bold">AnimeHub</span>
+                    </a>
+                    <div class="hidden md:flex space-x-6">
+                        <a href="index.html" class="text-white hover:text-crunchyroll-orange transition">Home</a>
+                        <a href="#browse" class="text-white hover:text-crunchyroll-orange transition">Browse</a>
+                        <a href="#news" class="text-white hover:text-crunchyroll-orange transition">News</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <button id="profileDropdown" class="flex items-center space-x-2 text-white hover:text-crunchyroll-orange transition">
+                            <div class="w-8 h-8 rounded-full bg-crunchyroll-orange flex items-center justify-center">
+                                <span class="text-white font-semibold">JD</span>
+                            </div>
+                            <span class="hidden md:inline">John Doe</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <!-- Dropdown Menu -->
+                        <div id="profileMenu" class="hidden absolute right-0 mt-2 w-48 bg-gray-800 rounded-lg shadow-lg py-2">
+                            <a href="profile.html" class="block px-4 py-2 text-white hover:bg-gray-700">
+                                <i class="fas fa-user mr-2"></i>Profile
+                            </a>
+                            <a href="#settings" class="block px-4 py-2 text-white hover:bg-gray-700">
+                                <i class="fas fa-cog mr-2"></i>Settings
+                            </a>
+                            <hr class="my-2 border-gray-700">
+                            <a href="login.html" class="block px-4 py-2 text-white hover:bg-gray-700">
+                                <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Video Player and Info -->
+            <div class="lg:col-span-2">
+                <!-- Video Player -->
+                <div class="bg-gray-900 rounded-lg overflow-hidden mb-6">
+                    <div class="video-container">
+                        <video id="videoPlayer" controls class="w-full">
+                            <source src="path/to/video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+
+                <!-- Video Info -->
+                <div class="bg-gray-800 rounded-lg p-6 mb-6">
+                    <div class="flex items-start justify-between mb-4">
+                        <div>
+                            <h1 class="text-2xl font-bold text-white mb-2" id="episodeTitle">Episode Title</h1>
+                            <p class="text-gray-400" id="episodeInfo">Season 1 • Episode 1</p>
+                        </div>
+                        <div class="flex space-x-4">
+                            <button class="text-gray-400 hover:text-white">
+                                <i class="fas fa-heart text-xl"></i>
+                            </button>
+                            <button class="text-gray-400 hover:text-white">
+                                <i class="fas fa-share text-xl"></i>
+                            </button>
+                            <button class="text-gray-400 hover:text-white">
+                                <i class="fas fa-list text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <p class="text-white mb-4" id="episodeDescription">
+                        Episode description will be displayed here...
+                    </p>
+                    <div class="flex items-center space-x-4">
+                        <span class="text-gray-400">
+                            <i class="fas fa-eye mr-2"></i>123.4K views
+                        </span>
+                        <span class="text-gray-400">
+                            <i class="fas fa-calendar mr-2"></i>Released Mar 31, 2024
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Comments Section -->
+                <div id="commentsContainer"></div>
+            </div>
+
+            <!-- Episode List -->
+            <div class="lg:col-span-1">
+                <div class="bg-gray-800 rounded-lg p-6">
+                    <h2 class="text-xl font-bold text-white mb-6">Episodes</h2>
+                    <div class="space-y-4 max-h-[600px] overflow-y-auto custom-scrollbar">
+                        <!-- Episode Items -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-white font-semibold mb-4">About AnimeHub</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-crunchyroll-orange">About Us</a></li>
+                        <li><a href="#" class="hover:text-crunchyroll-orange">Help/FAQ</a></li>
+                        <li><a href="#" class="hover:text-crunchyroll-orange">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-crunchyroll-orange">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Community</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-crunchyroll-orange">Forums</a></li>
+                        <li><a href="#" class="hover:text-crunchyroll-orange">Discord Server</a></li>
+                        <li><a href="#" class="hover:text-crunchyroll-orange">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-2xl hover:text-crunchyroll-orange">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-2xl hover:text-crunchyroll-orange">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-2xl hover:text-crunchyroll-orange">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Download App</h3>
+                    <div class="space-y-4">
+                        <a href="#" class="block">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store" class="h-10">
+                        </a>
+                        <a href="#" class="block">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Play Store" class="h-10">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center">
+                <p>&copy; 2024 AnimeHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="js/comments.js"></script>
+    <script>
+        // Initialize Comments System
+        let commentSystem;
+        document.addEventListener('DOMContentLoaded', () => {
+            commentSystem = initializeComments('commentsContainer');
+        });
+
+        // Profile Dropdown Toggle
+        const profileDropdown = document.getElementById('profileDropdown');
+        const profileMenu = document.getElementById('profileMenu');
+
+        profileDropdown.addEventListener('click', () => {
+            profileMenu.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!profileDropdown.contains(e.target)) {
+                profileMenu.classList.add('hidden');
+            }
+        });
+
+        // Load Episode Data
+        function loadEpisodeData() {
+            // This would normally fetch from an API
+            const urlParams = new URLSearchParams(window.location.search);
+            const episodeId = urlParams.get('id');
+            
+            // Mock data
+            const episodeData = {
+                title: "The Final Battle Begins",
+                season: 1,
+                episode: episodeId || 1,
+                description: "The Survey Corps and their allies prepare for the ultimate confrontation with the Titans. As humanity's fate hangs in the balance, old secrets are revealed and new alliances are forged in this pivotal episode.",
+                views: "123.4K",
+                releaseDate: "Mar 31, 2024",
+                videoUrl: "path/to/video.mp4"
+            };
+
+            // Update UI
+            document.getElementById('episodeTitle').textContent = episodeData.title;
+            document.getElementById('episodeInfo').textContent = `Season ${episodeData.season} • Episode ${episodeData.episode}`;
+            document.getElementById('episodeDescription').textContent = episodeData.description;
+            
+            // Update video source
+            const videoPlayer = document.getElementById('videoPlayer');
+            videoPlayer.src = episodeData.videoUrl;
+        }
+
+        // Load Episode List
+        function loadEpisodeList() {
+            // This would normally fetch from an API
+            const episodes = Array.from({length: 12}, (_, i) => ({
+                id: i + 1,
+                title: `Episode ${i + 1}: The Journey Continues`,
+                thumbnail: `https://picsum.photos/200/112?random=${i}`,
+                duration: "23:45",
+                progress: Math.random() * 100
+            }));
+
+            const container = document.querySelector('.custom-scrollbar');
+            container.innerHTML = episodes.map(episode => `
+                <a href="?id=${episode.id}" class="block bg-gray-700 rounded-lg overflow-hidden hover:bg-gray-600 transition">
+                    <div class="flex space-x-4">
+                        <div class="relative w-40">
+                            <img src="${episode.thumbnail}" alt="Episode ${episode.id}" class="w-full h-28 object-cover">
+                            <span class="absolute bottom-2 right-2 bg-black bg-opacity-75 text-white text-sm px-2 py-1 rounded">
+                                ${episode.duration}
+                            </span>
+                        </div>
+                        <div class="flex-grow p-4">
+                            <h3 class="text-white font-semibold mb-2">Episode ${episode.id}</h3>
+                            <p class="text-gray-400 text-sm">${episode.title}</p>
+                            ${episode.progress > 0 ? `
+                                <div class="mt-2 h-1 bg-gray-600 rounded-full overflow-hidden">
+                                    <div class="h-full bg-crunchyroll-orange" style="width: ${episode.progress}%"></div>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                </a>
+            `).join('');
+        }
+
+        // Initialize
+        loadEpisodeData();
+        loadEpisodeList();
+    </script>
+</body>
+</html>
