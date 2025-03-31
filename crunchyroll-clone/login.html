@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Crunchyroll Clone</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        crunchyroll: {
+                            orange: '#F47521',
+                            dark: '#23252B',
+                            light: '#F2F2F2'
+                        }
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-crunchyroll-dark font-inter min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-crunchyroll-dark/95 border-b border-gray-800">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <img src="assets/logo.svg" alt="Anime Logo" class="h-10 w-10">
+                    <span class="text-white text-xl font-bold">AnimeHub</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow flex items-center justify-center p-4">
+        <div class="w-full max-w-md">
+            <!-- Login Form Card -->
+            <div class="bg-gray-800 rounded-lg shadow-xl p-8">
+                <div class="text-center mb-8">
+                    <img src="assets/logo.svg" alt="Anime Logo" class="h-16 w-16 mx-auto mb-4">
+                    <h1 class="text-2xl font-bold text-white mb-2">Welcome Back!</h1>
+                    <p class="text-gray-400">Login to continue watching anime</p>
+                </div>
+
+                <!-- Login Form -->
+                <form id="login-form" class="space-y-6">
+                    <!-- Email Input -->
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-envelope text-gray-400"></i>
+                            </div>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                class="block w-full pl-10 pr-3 py-2 border border-gray-600 rounded-lg bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-crunchyroll-orange focus:border-transparent"
+                                placeholder="your@email.com"
+                                required
+                            >
+                        </div>
+                        <p class="mt-1 text-sm text-red-500 hidden" id="email-error"></p>
+                    </div>
+
+                    <!-- Password Input -->
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-gray-300 mb-2">Password</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-lock text-gray-400"></i>
+                            </div>
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password" 
+                                class="block w-full pl-10 pr-3 py-2 border border-gray-600 rounded-lg bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-crunchyroll-orange focus:border-transparent"
+                                placeholder="••••••••"
+                                required
+                            >
+                            <button 
+                                type="button"
+                                class="absolute inset-y-0 right-0 pr-3 flex items-center"
+                                onclick="togglePasswordVisibility()"
+                            >
+                                <i class="fas fa-eye text-gray-400 hover:text-white" id="password-toggle"></i>
+                            </button>
+                        </div>
+                        <p class="mt-1 text-sm text-red-500 hidden" id="password-error"></p>
+                    </div>
+
+                    <!-- User Type Selection -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Login As</label>
+                        <div class="grid grid-cols-2 gap-4">
+                            <button 
+                                type="button"
+                                class="flex items-center justify-center p-3 border-2 border-gray-600 rounded-lg hover:border-crunchyroll-orange transition user-type-btn active"
+                                data-type="user"
+                                onclick="selectUserType('user')"
+                            >
+                                <i class="fas fa-user mr-2"></i>
+                                <span>User</span>
+                            </button>
+                            <button 
+                                type="button"
+                                class="flex items-center justify-center p-3 border-2 border-gray-600 rounded-lg hover:border-crunchyroll-orange transition user-type-btn"
+                                data-type="admin"
+                                onclick="selectUserType('admin')"
+                            >
+                                <i class="fas fa-user-shield mr-2"></i>
+                                <span>Admin</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Remember Me & Forgot Password -->
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input 
+                                type="checkbox" 
+                                id="remember-me" 
+                                class="h-4 w-4 text-crunchyroll-orange focus:ring-crunchyroll-orange border-gray-600 rounded bg-gray-700"
+                            >
+                            <label for="remember-me" class="ml-2 block text-sm text-gray-300">
+                                Remember me
+                            </label>
+                        </div>
+                        <a href="#" class="text-sm text-crunchyroll-orange hover:text-orange-400">
+                            Forgot password?
+                        </a>
+                    </div>
+
+                    <!-- Login Button -->
+                    <button 
+                        type="submit"
+                        class="w-full bg-crunchyroll-orange text-white font-semibold py-3 px-4 rounded-lg hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-crunchyroll-orange transition duration-300"
+                    >
+                        Log In
+                    </button>
+                </form>
+
+                <!-- Sign Up Link -->
+                <p class="mt-6 text-center text-gray-400">
+                    Don't have an account? 
+                    <a href="signup.html" class="text-crunchyroll-orange hover:text-orange-400 font-semibold">
+                        Sign up for free
+                    </a>
+                </p>
+            </div>
+
+            <!-- Additional Info -->
+            <p class="mt-8 text-center text-sm text-gray-400">
+                By continuing, you agree to our 
+                <a href="#" class="text-crunchyroll-orange hover:text-orange-400">Terms of Service</a> and 
+                <a href="#" class="text-crunchyroll-orange hover:text-orange-400">Privacy Policy</a>
+            </p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-4">
+        <div class="container mx-auto px-4 text-center text-sm">
+            <p>&copy; 2024 AnimeHub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script>
+        // Toggle Password Visibility
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            const passwordToggle = document.getElementById('password-toggle');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                passwordToggle.classList.remove('fa-eye');
+                passwordToggle.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                passwordToggle.classList.remove('fa-eye-slash');
+                passwordToggle.classList.add('fa-eye');
+            }
+        }
+
+        // User Type Selection
+        function selectUserType(type) {
+            document.querySelectorAll('.user-type-btn').forEach(btn => {
+                btn.classList.remove('active', 'border-crunchyroll-orange', 'text-crunchyroll-orange');
+                btn.classList.add('border-gray-600', 'text-gray-300');
+            });
+
+            const selectedBtn = document.querySelector(`[data-type="${type}"]`);
+            selectedBtn.classList.add('active', 'border-crunchyroll-orange', 'text-crunchyroll-orange');
+            selectedBtn.classList.remove('border-gray-600', 'text-gray-300');
+        }
+
+        // Form Validation and Submission
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email');
+            const password = document.getElementById('password');
+            const emailError = document.getElementById('email-error');
+            const passwordError = document.getElementById('password-error');
+            
+            // Reset errors
+            emailError.classList.add('hidden');
+            passwordError.classList.add('hidden');
+            
+            let isValid = true;
+
+            // Email validation
+            if (!email.value) {
+                emailError.textContent = 'Email is required';
+                emailError.classList.remove('hidden');
+                isValid = false;
+            } else if (!/\S+@\S+\.\S+/.test(email.value)) {
+                emailError.textContent = 'Please enter a valid email address';
+                emailError.classList.remove('hidden');
+                isValid = false;
+            }
+
+            // Password validation
+            if (!password.value) {
+                passwordError.textContent = 'Password is required';
+                passwordError.classList.remove('hidden');
+                isValid = false;
+            }
+
+            if (isValid) {
+                // Show loading state
+                const submitButton = e.target.querySelector('button[type="submit"]');
+                const originalText = submitButton.textContent;
+                submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Logging in...';
+                submitButton.disabled = true;
+
+                // Get selected user type
+                const isAdmin = document.querySelector('[data-type="admin"]').classList.contains('active');
+
+                // Simulate API call
+                setTimeout(() => {
+                    // Reset button state
+                    submitButton.innerHTML = originalText;
+                    submitButton.disabled = false;
+
+                    // Redirect based on user type
+                    if (isAdmin) {
+                        window.location.href = 'admin/index.html';
+                    } else {
+                        window.location.href = 'index.html';
+                    }
+                }, 1500);
+            }
+        });
+
+        // Input animations
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.classList.add('ring-2', 'ring-crunchyroll-orange');
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.classList.remove('ring-2', 'ring-crunchyroll-orange');
+            });
+        });
+    </script>
+</body>
+</html>
