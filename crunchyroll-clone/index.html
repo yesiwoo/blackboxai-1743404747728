@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crunchyroll Clone - Watch Anime Online</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        crunchyroll: {
+                            orange: '#F47521',
+                            dark: '#23252B',
+                            light: '#F2F2F2'
+                        }
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-crunchyroll-dark font-inter text-white">
+    <!-- Header/Navigation -->
+    <header class="fixed w-full top-0 z-50 bg-crunchyroll-dark/95 border-b border-gray-800">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center">
+                    <img src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=128" alt="Crunchyroll" class="h-8">
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-white hover:text-crunchyroll-orange transition">Browse</a>
+                    <a href="#" class="text-white hover:text-crunchyroll-orange transition">Manga</a>
+                    <a href="#" class="text-white hover:text-crunchyroll-orange transition">Games</a>
+                    <a href="#" class="text-white hover:text-crunchyroll-orange transition">News</a>
+                </div>
+
+                <!-- Auth Buttons -->
+                <div class="flex items-center space-x-4">
+                    <a href="login.html" class="hidden md:block text-white hover:text-crunchyroll-orange transition">Login</a>
+                    <a href="signup.html" class="bg-crunchyroll-orange text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition">
+                        Try Free
+                    </a>
+                    <!-- Mobile Menu Button -->
+                    <button class="md:hidden text-white">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Navigation Menu (Hidden by default) -->
+    <div class="hidden fixed inset-0 z-40 bg-crunchyroll-dark md:hidden" id="mobile-menu">
+        <div class="flex flex-col p-4 space-y-4">
+            <a href="#" class="text-white hover:text-crunchyroll-orange transition">Browse</a>
+            <a href="#" class="text-white hover:text-crunchyroll-orange transition">Manga</a>
+            <a href="#" class="text-white hover:text-crunchyroll-orange transition">Games</a>
+            <a href="#" class="text-white hover:text-crunchyroll-orange transition">News</a>
+            <a href="login.html" class="text-white hover:text-crunchyroll-orange transition">Login</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen">
+        <div class="absolute inset-0 bg-gradient-to-r from-black to-transparent z-10"></div>
+        <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?w=1920" alt="Hero Banner" class="absolute inset-0 w-full h-full object-cover">
+        <div class="relative z-20 container mx-auto px-4 h-full flex items-center">
+            <div class="max-w-2xl">
+                <h1 class="text-5xl md:text-6xl font-bold mb-4">Welcome to Anime Paradise</h1>
+                <p class="text-xl mb-8">Stream the latest episodes of your favorite anime shows, read manga, and stay updated with anime news.</p>
+                <a href="signup.html" class="bg-crunchyroll-orange text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-opacity-90 transition inline-block">
+                    Start Watching Free
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Anime Section -->
+    <section class="py-16 px-4">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold mb-8">Featured Anime</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="featured-anime">
+                <!-- Anime Cards will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Trending Now Section -->
+    <section class="py-16 px-4 bg-gray-900">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold mb-8">Trending Now</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="trending-anime">
+                <!-- Anime Cards will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Navigation</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-crunchyroll-orange transition">Browse Popular</a></li>
+                        <li><a href="#" class="hover:text-crunchyroll-orange transition">Browse Simulcasts</a></li>
+                        <li><a href="#" class="hover:text-crunchyroll-orange transition">Browse Manga</a></li>
+                        <li><a href="#" class="hover:text-crunchyroll-orange transition">Release Calendar</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Connect With Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-2xl hover:text-crunchyroll-orange transition"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-2xl hover:text-crunchyroll-orange transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-2xl hover:text-crunchyroll-orange transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-2xl hover:text-crunchyroll-orange transition"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Crunchyroll</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-crunchyroll-orange transition">About</a></li>
+                        <li><a href="#" class="hover:text-crunchyroll-orange transition">Help/FAQ</a></li>
+                        <li><a href="#" class="hover:text-crunchyroll-orange transition">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-crunchyroll-orange transition">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Account</h3>
+                    <ul class="space-y-2">
+                        <li><a href="login.html" class="hover:text-crunchyroll-orange transition">Login</a></li>
+                        <li><a href="signup.html" class="hover:text-crunchyroll-orange transition">Sign Up</a></li>
+                        <li><a href="#" class="hover:text-crunchyroll-orange transition">Premium Access</a></li>
+                        <li><a href="#" class="hover:text-crunchyroll-orange transition">Gift Premium</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-800 text-center">
+                <p>&copy; 2024 Crunchyroll Clone. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+</html>
