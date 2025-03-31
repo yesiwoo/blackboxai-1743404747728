@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - AnimeHub</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        crunchyroll: {
+                            orange: '#F47521',
+                            dark: '#23252B',
+                            light: '#F2F2F2'
+                        }
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-crunchyroll-dark font-inter min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-crunchyroll-dark/95 border-b border-gray-800">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-8">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <img src="assets/logo.svg" alt="Anime Logo" class="h-10 w-10">
+                        <span class="text-white text-xl font-bold">AnimeHub</span>
+                    </a>
+                    <div class="hidden md:flex space-x-6">
+                        <a href="index.html" class="text-white hover:text-crunchyroll-orange transition">Home</a>
+                        <a href="#watchlist" class="text-white hover:text-crunchyroll-orange transition">My Watchlist</a>
+                        <a href="#history" class="text-white hover:text-crunchyroll-orange transition">History</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <button id="profileDropdown" class="flex items-center space-x-2 text-white hover:text-crunchyroll-orange transition">
+                            <div class="w-8 h-8 rounded-full bg-crunchyroll-orange flex items-center justify-center">
+                                <span class="text-white font-semibold">JD</span>
+                            </div>
+                            <span class="hidden md:inline">John Doe</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <!-- Dropdown Menu -->
+                        <div id="profileMenu" class="hidden absolute right-0 mt-2 w-48 bg-gray-800 rounded-lg shadow-lg py-2">
+                            <a href="profile.html" class="block px-4 py-2 text-white hover:bg-gray-700">
+                                <i class="fas fa-user mr-2"></i>Profile
+                            </a>
+                            <a href="#settings" class="block px-4 py-2 text-white hover:bg-gray-700">
+                                <i class="fas fa-cog mr-2"></i>Settings
+                            </a>
+                            <a href="#subscription" class="block px-4 py-2 text-white hover:bg-gray-700">
+                                <i class="fas fa-crown mr-2"></i>Subscription
+                            </a>
+                            <hr class="my-2 border-gray-700">
+                            <a href="login.html" class="block px-4 py-2 text-white hover:bg-gray-700">
+                                <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <!-- Profile Header -->
+        <div class="bg-gray-800 rounded-lg p-6 mb-8">
+            <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8">
+                <div class="w-32 h-32 rounded-full bg-crunchyroll-orange flex items-center justify-center">
+                    <span class="text-white text-4xl font-bold">JD</span>
+                </div>
+                <div class="text-center md:text-left">
+                    <h1 class="text-2xl font-bold text-white mb-2">John Doe</h1>
+                    <p class="text-gray-400">@johndoe • Premium Member</p>
+                    <div class="flex items-center justify-center md:justify-start space-x-4 mt-4">
+                        <div class="text-center">
+                            <p class="text-xl font-bold text-white">42</p>
+                            <p class="text-sm text-gray-400">Watching</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-xl font-bold text-white">156</p>
+                            <p class="text-sm text-gray-400">Completed</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-xl font-bold text-white">24</p>
+                            <p class="text-sm text-gray-400">Plan to Watch</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ml-auto">
+                    <button class="bg-crunchyroll-orange text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition">
+                        Edit Profile
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Tabs -->
+        <div class="mb-8">
+            <div class="flex space-x-4 border-b border-gray-700">
+                <button class="px-4 py-2 text-crunchyroll-orange border-b-2 border-crunchyroll-orange">Overview</button>
+                <button class="px-4 py-2 text-gray-400 hover:text-white">Watchlist</button>
+                <button class="px-4 py-2 text-gray-400 hover:text-white">History</button>
+                <button class="px-4 py-2 text-gray-400 hover:text-white">Reviews</button>
+            </div>
+        </div>
+
+        <!-- Currently Watching -->
+        <section class="mb-12">
+            <h2 class="text-xl font-bold text-white mb-6">Currently Watching</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Anime Card -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?w=500" alt="Attack on Titan" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-white font-semibold mb-2">Attack on Titan</h3>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400 text-sm">Episode 76/87</span>
+                            <div class="w-24 h-1 bg-gray-700 rounded-full overflow-hidden">
+                                <div class="w-3/4 h-full bg-crunchyroll-orange"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- More Anime Cards -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1580477667995-2b94f01c9516?w=500" alt="Demon Slayer" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-white font-semibold mb-2">Demon Slayer</h3>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400 text-sm">Episode 12/26</span>
+                            <div class="w-24 h-1 bg-gray-700 rounded-full overflow-hidden">
+                                <div class="w-1/2 h-full bg-crunchyroll-orange"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Watch History -->
+        <section class="mb-12">
+            <h2 class="text-xl font-bold text-white mb-6">Recent Activity</h2>
+            <div class="bg-gray-800 rounded-lg overflow-hidden">
+                <div class="p-6 space-y-6">
+                    <!-- Activity Item -->
+                    <div class="flex items-start space-x-4">
+                        <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?w=120" alt="Attack on Titan" class="w-16 h-16 rounded object-cover">
+                        <div>
+                            <h3 class="text-white font-semibold">Attack on Titan</h3>
+                            <p class="text-gray-400">Watched Episode 76: The Final Battle Begins</p>
+                            <p class="text-sm text-gray-500">2 hours ago</p>
+                        </div>
+                    </div>
+
+                    <!-- Activity Item -->
+                    <div class="flex items-start space-x-4">
+                        <img src="https://images.unsplash.com/photo-1580477667995-2b94f01c9516?w=120" alt="Demon Slayer" class="w-16 h-16 rounded object-cover">
+                        <div>
+                            <h3 class="text-white font-semibold">Demon Slayer</h3>
+                            <p class="text-gray-400">Watched Episode 12: The Power of Fire</p>
+                            <p class="text-sm text-gray-500">Yesterday</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recommendations -->
+        <section>
+            <h2 class="text-xl font-bold text-white mb-6">Recommended for You</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Recommendation Card -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1618336753974-aae8e04506aa?w=500" alt="Jujutsu Kaisen" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-white font-semibold mb-2">Jujutsu Kaisen</h3>
+                        <p class="text-gray-400 text-sm mb-4">Based on your interest in Action anime</p>
+                        <button class="w-full bg-crunchyroll-orange text-white py-2 rounded hover:bg-orange-600 transition">
+                            Add to Watchlist
+                        </button>
+                    </div>
+                </div>
+
+                <!-- More Recommendation Cards -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=500" alt="My Hero Academia" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-white font-semibold mb-2">My Hero Academia</h3>
+                        <p class="text-gray-400 text-sm mb-4">Based on your watchlist</p>
+                        <button class="w-full bg-crunchyroll-orange text-white py-2 rounded hover:bg-orange-600 transition">
+                            Add to Watchlist
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-white font-semibold mb-4">About AnimeHub</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-crunchyroll-orange">About Us</a></li>
+                        <li><a href="#" class="hover:text-crunchyroll-orange">Help/FAQ</a></li>
+                        <li><a href="#" class="hover:text-crunchyroll-orange">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-crunchyroll-orange">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Community</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-crunchyroll-orange">Forums</a></li>
+                        <li><a href="#" class="hover:text-crunchyroll-orange">Discord Server</a></li>
+                        <li><a href="#" class="hover:text-crunchyroll-orange">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-2xl hover:text-crunchyroll-orange">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-2xl hover:text-crunchyroll-orange">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-2xl hover:text-crunchyroll-orange">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Download App</h3>
+                    <div class="space-y-4">
+                        <a href="#" class="block">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store" class="h-10">
+                        </a>
+                        <a href="#" class="block">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Play Store" class="h-10">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center">
+                <p>&copy; 2024 AnimeHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script>
+        // Profile Dropdown Toggle
+        const profileDropdown = document.getElementById('profileDropdown');
+        const profileMenu = document.getElementById('profileMenu');
+
+        profileDropdown.addEventListener('click', () => {
+            profileMenu.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!profileDropdown.contains(e.target)) {
+                profileMenu.classList.add('hidden');
+            }
+        });
+
+        // Tab Switching
+        const tabs = document.querySelectorAll('[role="tab"]');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active state from all tabs
+                tabs.forEach(t => {
+                    t.classList.remove('text-crunchyroll-orange', 'border-b-2', 'border-crunchyroll-orange');
+                    t.classList.add('text-gray-400');
+                });
+
+                // Add active state to clicked tab
+                tab.classList.remove('text-gray-400');
+                tab.classList.add('text-crunchyroll-orange', 'border-b-2', 'border-crunchyroll-orange');
+            });
+        });
+
+        // Progress Bar Animation
+        const progressBars = document.querySelectorAll('.progress-bar');
+        progressBars.forEach(bar => {
+            const progress = bar.getAttribute('data-progress');
+            bar.style.width = `${progress}%`;
+        });
+    </script>
+</body>
+</html>
